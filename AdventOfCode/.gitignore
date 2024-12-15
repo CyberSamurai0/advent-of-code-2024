@@ -1,0 +1,5 @@
+AdventOfCode/bin/
+AdventOfCode/obj/
+AdventOfCode/inputs/
+AdventOfCode/obj/advent-of-code.csproj.nuget.g.props
+AdventOfCode/obj/advent-of-code.csproj.nuget.dgspec.json
