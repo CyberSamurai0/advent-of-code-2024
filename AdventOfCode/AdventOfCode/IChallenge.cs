@@ -1,5 +1,5 @@
 namespace AdventOfCode;
 
 public interface IChallenge {
-	void Run(string inFile);
+	void Run();
 }
