@@ -4,30 +4,36 @@ namespace AdventOfCode.challenges;
 
 public class HistorianHysteria : Challenge {
 	public HistorianHysteria(string inFile) : base(inFile) { }
-
-	private List<int>? _left;
-	private List<int>? _right;
-
-	private int _sum;
 	
 	public void Run() {
-		_left = new List<int>();
-		_right = new List<int>();
-		_sum = 0;
+		List<int> left = new List<int>();
+		List<int> right = new List<int>();
+		int sum = 0;
 		
 		foreach (string l in this.Input.Lines) {
 			string[] x = l.Split("   ");
-			_left.Add(int.Parse(x[0]));
-			_right.Add(int.Parse(x[1]));
+			left.Add(int.Parse(x[0]));
+			right.Add(int.Parse(x[1]));
 		}
 		
-		_left.Sort();
-		_right.Sort();
+		left.Sort();
+		right.Sort();
 
 		for (int i = 0; i < this.Input.Lines.Length; i++) {
-			_sum += Math.Abs(_left[i] - _right[i]);
+			sum += Math.Abs(left[i] - right[i]);
 		}
 		
-		Console.WriteLine("Total Distance between Lists: " + _sum);
+		Console.WriteLine("Total Distance between Lists (Pt. 1): " + sum);
+
+		int sum2 = 0;
+		foreach (int l in left) {
+			int count = 0;
+			foreach (int r in right) {
+				if (l == r) count++;
+			}
+			sum2 += l * count;
+		}
+		
+		Console.WriteLine("List Similarity Score (Pt. 2): " + sum2);
 	}
 }
